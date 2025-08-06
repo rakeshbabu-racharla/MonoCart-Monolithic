@@ -46,10 +46,10 @@ public class CartController {
 	}
 	
 	@PostMapping("/create-cart-by-userId/{userId}")
-    public ResponseEntity<Cart> createCartForUser(@PathVariable int userId) {
-        Cart cart = cartService.createCartForUser(userId);
-        return ResponseEntity.ok(cart);
-    }
+        public ResponseEntity<Cart> createCartForUser(@PathVariable int userId) {
+            Cart cart = cartService.createCartForUser(userId);
+            return ResponseEntity.ok(cart);
+        }
 	 
 	@PostMapping("/add-product-to-cart") // cartId , productId , quantity
 	public ResponseEntity<Cart> addToCart(@RequestBody AddProductToCartRequest request) {
@@ -71,14 +71,14 @@ public class CartController {
 	}
 	
 	@PostMapping("/create-order-from-cart/{cartId}")
-    public ResponseEntity<Order> placeOrderFromCart(@PathVariable int cartId) {
-        try {
-            Order order = orderService.createOrderFromCart(cartId);
-            return ResponseEntity.ok(order);
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(null); // or return an error message
+        public ResponseEntity<Order> placeOrderFromCart(@PathVariable int cartId) {
+            try {
+                Order order = orderService.createOrderFromCart(cartId);
+                return ResponseEntity.ok(order);
+            } catch (RuntimeException e) {
+                return ResponseEntity.badRequest().body(null); // or return an error message
+            }
         }
-    }
 	
 	
 	
